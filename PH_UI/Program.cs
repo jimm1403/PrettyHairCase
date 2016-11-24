@@ -162,7 +162,7 @@ namespace PH_UI
                 Console.WriteLine(product);
             }
             Console.ReadKey();
-            productList.Clear();
+            orderList.Clear();
         }
     }
 }

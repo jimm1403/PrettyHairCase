@@ -9,7 +9,6 @@ namespace UnitTestProjectPH
     [TestClass]
     public class UnitTest1
     {
-
         [TestInitialize]
         public void SetUpTest()
         {
@@ -60,7 +59,7 @@ namespace UnitTestProjectPH
         [TestMethod]
         public void CanAddOrderToList()
         {
-            InventoryRepository invRepo = new InventoryRepository();
+            OrderRepository invRepo = new OrderRepository();
             Order newOrder = new Order(DateTime.Parse("15-11-2016"), DateTime.Parse("01-12-2016"), 20, 2);
             
             invRepo.AddOrderToList(newOrder);
@@ -102,10 +101,11 @@ namespace UnitTestProjectPH
         public void CanChangeThePriceOfAProduct()
         {
             Product newProduct = new Product("Hairbrush", 20.00, "Hairbrush with steelhandle", 45);
+            ProductRepository prodRepo = new ProductRepository();
+            prodRepo.AddProductToList(newProduct);
+            prodRepo.AdjustPriceByIndex(0, 35.00);
 
-            newProduct.AdjustPrice(17.49);
-
-            Assert.AreEqual(17.49, newProduct.Price);
+            Assert.AreEqual(35.00, newProduct.Price);
         }
         [TestMethod]
         public void CanDeleteProductFromList()

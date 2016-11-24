@@ -12,7 +12,6 @@ namespace PrettyHair
         List<Product> productList = new List<Product>();
         List<string> stringList = new List<string>();
 
-
         public void AddIgnoredAsFirstToList()
         {
             productList.Add(product);
@@ -40,6 +39,11 @@ namespace PrettyHair
             }
 
             return stringList;
+        }
+
+        public void AdjustPriceByIndex(int index, double adjustedPrice)
+        {
+            productList[index].AdjustPrice(adjustedPrice);
         }
 
         public void DeleteProduct(int productId)

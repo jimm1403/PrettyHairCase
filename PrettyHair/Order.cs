@@ -19,5 +19,9 @@ namespace PrettyHair
             quantity = _quantity;
             productTypeId = _productTypeId;
         }
+        public override string ToString()
+        {
+            return productTypeId + ", " + quantity + ", " + orderDate + ", " + deliveryDate;
+        }
     }
 }

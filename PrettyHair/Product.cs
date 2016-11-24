@@ -64,13 +64,15 @@ namespace PrettyHair
         }
         public void SubFromAmount(int subAmount)
         {
-            amount -= subAmount;
+            if (amount > subAmount)
+            {
+                amount -= subAmount;
+            }
+            else
+            {
+                Console.WriteLine("There is not enough in stock to process this order.");
+            }
         }
-        //public void ChangeDescription(int index, string newDescription)
-        //{
-
-        //    description = newDescription;
-        //}
         public void AdjustPrice(double adjustedPrice)
         {
             price = adjustedPrice;

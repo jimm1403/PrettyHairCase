@@ -10,7 +10,7 @@ namespace PH_UI
     {
         string NL = Environment.NewLine;
         CustomerRepository customerRepository = new CustomerRepository();
-        InventoryRepository invRepo = new InventoryRepository();
+        OrderRepository orderRepo = new OrderRepository();
         ProductRepository prodRepo = new ProductRepository();
         
         static void Main(string[] args)
@@ -93,7 +93,7 @@ namespace PH_UI
             Console.WriteLine("Product type id:");
             int productTypeId = int.Parse(GetUserInput());
             Order newOrder = new Order(orderDate, orderDeliveryDate, quantity, productTypeId);
-            invRepo.AddOrderToList(newOrder);
+            orderRepo.AddOrderToList(newOrder);
         }
         public void NewProductType()
         {
@@ -126,9 +126,15 @@ namespace PH_UI
         public void AdjustPrice()
         {
             Product myProduct = new Product();
-            Console.WriteLine("Adjust the price for the product.");
+            ShowProductInventory();
+
+            Console.WriteLine("Which row would you like to adjust the price of (Use the first number)");
+            int indexToChange = int.Parse(GetUserInput());
+
+            Console.WriteLine("Enter the new price.");
             double adjustedPrice = double.Parse(GetUserInput());
-            myProduct.AdjustPrice(adjustedPrice);
+
+            prodRepo.AdjustPriceByIndex(indexToChange, adjustedPrice);
         }
         public void ShowCustomerList()
         {
@@ -148,6 +154,15 @@ namespace PH_UI
             Console.ReadKey();
             productList.Clear();
         }
-        
+        public void ShowOrderList()
+        {
+            List<string> orderList = orderRepo.GetListAsStringList();
+            foreach (string product in orderList.Skip(1))
+            {
+                Console.WriteLine(product);
+            }
+            Console.ReadKey();
+            productList.Clear();
+        }
     }
 }

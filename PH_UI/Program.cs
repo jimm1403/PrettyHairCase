@@ -9,7 +9,7 @@ namespace PH_UI
     class Program
     {
         string NL = Environment.NewLine;
-        CustomerRepository customerRepository = new CustomerRepository();
+        CustomerRepository custRepo = new CustomerRepository();
         OrderRepository orderRepo = new OrderRepository();
         ProductRepository prodRepo = new ProductRepository();
         
@@ -23,7 +23,7 @@ namespace PH_UI
         {
             string choice = "";
             bool run = true;
-            prodRepo.AddIgnoredAsFirstToList();
+            //prodRepo.AddIgnoredAsFirstToList();
             do
             {
                 Console.Clear();
@@ -39,6 +39,10 @@ namespace PH_UI
                     case "n": NewProductType(); break;
                     case "d": ChangeDescription(); break;
                     case "a": AdjustPrice(); break;
+                    case "o": ShowOrderList(); break;
+                    case "addorder": AddTestOrders(); break;
+                    case "addprod": AddTestProducts(); break;
+                    case "test": TestEvent();   break;
                     case "exit": run = false; break;
                     default: ShowMenuSelectionError(); break;
                 }
@@ -60,6 +64,7 @@ namespace PH_UI
                 "Type 'N' to add a new product type" + NL +
                 "Type 'D' to change the description of a product" + NL +
                 "Type 'A' to adjust the price of a product" + NL +
+                "Type 'O' to show list of orders" + NL +
                 "Type exit to close program.");
         }
         public string GetUserInput()
@@ -69,18 +74,20 @@ namespace PH_UI
         }
         public void RegisterCustomer()
         {
-            Console.WriteLine("Customer last name:");
-            string lastName = GetUserInput();
-            Console.WriteLine("Customer first name:");
-            string firstName = GetUserInput();
-            Console.WriteLine("Customer address:");
-            string address = GetUserInput();
-            Console.WriteLine("Customer phone number:");
-            string phoneNumber = GetUserInput();
-            Customer newCustomer = new Customer(lastName, firstName, address, phoneNumber);
-            customerRepository.AddCustomerToList(newCustomer);
-            Console.WriteLine("You have registered: " + lastName + ", " + firstName + ", " + address + ", " + phoneNumber + "." + NL + "Click Enter");
-            Console.ReadKey();
+            DatabaseFacade databaseConnect = new DatabaseFacade();
+            databaseConnect.InsertCustomer();
+            //Console.WriteLine("Customer last name:");
+            //string lastName = GetUserInput();
+            //Console.WriteLine("Customer first name:");
+            //string firstName = GetUserInput();
+            //Console.WriteLine("Customer address:");
+            //string address = GetUserInput();
+            //Console.WriteLine("Customer phone number:");
+            //string phoneNumber = GetUserInput();
+            //Customer newCustomer = new Customer(lastName, firstName, address, phoneNumber);
+            //customerRepository.AddCustomerToList(newCustomer);
+            //Console.WriteLine("You have registered: " + lastName + ", " + firstName + ", " + address + ", " + phoneNumber + "." + NL + "Click Enter");
+            //Console.ReadKey();
         }
         public void InputOrder()
         {
@@ -138,11 +145,45 @@ namespace PH_UI
         }
         public void ShowCustomerList()
         {
-            List<string> customerList = customerRepository.GetListAsStringList();
+            DatabaseFacade dbf = new DatabaseFacade();
+            dbf.GetCustomer();
+            List<string> customerList = custRepo.GetListAsStringList();
             foreach (string customer in customerList)
             {
                 Console.WriteLine(customer);
             }
+            Console.ReadKey();
+            customerList.Clear();
+            custRepo.ClearRepository();
+            
+        }
+        public void AddTestProducts()
+        {
+            Product newProduct1 = new Product("Hair Brush", 20.95, "With steelhandle", 20);
+            Product newProduct2 = new Product("Hair Conditioner", 35.00, "Very nice for hair", 5);
+            Product newProduct3 = new Product("Shampoo", 25.00 , "Soft hair", 10);
+            prodRepo.AddProductToList(newProduct1);
+            prodRepo.AddProductToList(newProduct2);
+            prodRepo.AddProductToList(newProduct3);
+        }
+        public void AddTestOrders()
+        {
+            Order newOrder1 = new Order(Convert.ToDateTime("28-10-2016"), Convert.ToDateTime("30-10-2016"), 18, 1);
+            Order newOrder2 = new Order(Convert.ToDateTime("20-10-2016"), Convert.ToDateTime("23-10-2016"), 7, 2);
+            Order newOrder3 = new Order(Convert.ToDateTime("18-10-2016"), Convert.ToDateTime("22-10-2016"), 5, 3);
+            orderRepo.AddOrderToList(newOrder1);
+            orderRepo.AddOrderToList(newOrder2);
+            orderRepo.AddOrderToList(newOrder3);
+        }
+        public void ShowOrderList()
+        {
+            List<Order> orderList = orderRepo.GetList();
+            
+            foreach (Order order in orderList)
+            {
+                Console.WriteLine(order.ToString());
+            }
+            Console.ReadKey();
         }
         public void ShowProductInventory()
         {
@@ -154,15 +195,16 @@ namespace PH_UI
             Console.ReadKey();
             productList.Clear();
         }
-        public void ShowOrderList()
+        public void TestEvent()
         {
-            List<string> orderList = orderRepo.GetListAsStringList();
-            foreach (string product in orderList.Skip(1))
-            {
-                Console.WriteLine(product);
-            }
+
+            OrderRepository m = new OrderRepository();
+            Email l = new Email();
+            l.Subscribe(m);
+            m.CheckQuantityAgainstAmount();
+            
             Console.ReadKey();
-            orderList.Clear();
+            
         }
     }
 }

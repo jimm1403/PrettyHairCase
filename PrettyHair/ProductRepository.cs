@@ -9,13 +9,13 @@ namespace PrettyHair
     {
         
         Product product = new Product();
-        List<Product> productList = new List<Product>();
+        static List<Product> productList = new List<Product>();
         List<string> stringList = new List<string>();
 
-        public void AddIgnoredAsFirstToList()
-        {
-            productList.Add(product);
-        }
+        //public void AddIgnoredAsFirstToList()
+        //{
+        //    productList.Add(product);
+        //}
         public void ChangeDescription(int index, string newDescription)
         {
             productList[index].Description = newDescription;

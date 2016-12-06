@@ -8,9 +8,9 @@ namespace PrettyHair
     public class Customer
     {
         //Variables
-        static int nextId = 1;
+        //static int nextId = 1;
 
-        int id;
+        //int id;
         string lastName;
         string firstName;
         string address;
@@ -26,16 +26,16 @@ namespace PrettyHair
             this.firstName = firstName;
             this.address = address;
             this.phoneNumber = phoneNumber;
-            id = nextId++;
+            //id = nextId++;
         }
         //Methods
-        public int GetId()
-        {
-            return id;
-        }
+        //public int GetId()
+        //{
+        //    return id;
+        //}
         public override string ToString()
         {
-            return id + ", " + lastName + ", " + firstName + ", " + address + ", " + phoneNumber;
+            return lastName + ", " + firstName + ", " + address + ", " + phoneNumber;
         }
     }
 }

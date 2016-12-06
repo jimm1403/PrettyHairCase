@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
+    <Compile Include="DatabaseFacade.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="OrderRepository.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductRepository.cs" />

@@ -7,7 +7,6 @@ namespace PrettyHair
 {
     public class ProductRepository
     {
-        
         Product product = new Product();
         static List<Product> productList = new List<Product>();
         List<string> stringList = new List<string>();

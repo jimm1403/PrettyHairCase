@@ -10,6 +10,10 @@ namespace PrettyHair
         static List<Customer> customerList = new List<Customer>();
         List<string> stringList = new List<string>();
 
+        public void AddAllCustomersToList(List<Customer> custList)
+        {
+            customerList.AddRange(custList);
+        }
         public void AddCustomerToList(Customer newCustomer)
         {
             customerList.Add(newCustomer);

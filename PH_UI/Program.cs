@@ -23,7 +23,7 @@ namespace PH_UI
         {
             string choice = "";
             bool run = true;
-            //prodRepo.AddIgnoredAsFirstToList();
+            prodRepo.AddIgnoredAsFirstToList();
             do
             {
                 Console.Clear();

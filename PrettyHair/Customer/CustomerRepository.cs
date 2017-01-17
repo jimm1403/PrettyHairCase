@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,7 @@ namespace PrettyHair
 {
     public class CustomerRepository
     {
-        static List<Customer> customerList = new List<Customer>();
-        List<string> stringList = new List<string>();
+        List<Customer> customerList = new List<Customer>();
 
         public void AddAllCustomersToList(List<Customer> custList)
         {
@@ -26,36 +26,16 @@ namespace PrettyHair
         {
             return customerList;
         }
-
-        public List<string> GetListAsStringList()
+        
+        public void CreateCustomer(string lastName, string firstName, string address, string phoneNumber)
         {
-            foreach (Customer customer in customerList)
-            {
-                stringList.Add(customer.ToString());
-            }
+            Customer newCust = new Customer(lastName, firstName, address, phoneNumber);
+            SaveToDB(newCust);
 
-            return stringList;
         }
-
-        public string Search(string searchWord)
+        public void SaveToDB(Customer newCust)
         {
-            
-            string resultCustomer = "";
-            List<string> searchLineList = GetListAsStringList();
-
-            foreach (string customer in searchLineList)
-            {
-                if (customer.Contains(searchWord))
-                {
-                    resultCustomer = customer;
-                }
-            }
-            if (!resultCustomer.Contains(searchWord))
-            {
-                resultCustomer = "Nothing found";
-            }
-
-            return resultCustomer;
+            DatabaseLayer.DatabaseFacade.Instance.NewCustomer(newCust);
         }
     }
 }

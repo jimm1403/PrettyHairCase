@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PrettyHair;
+using DomainLayer;
 
 namespace PH_UI
 {
@@ -92,7 +93,7 @@ namespace PH_UI
             //customerRepository.AddCustomerToList(newCustomer);
             //Console.WriteLine("You have registered: " + lastName + ", " + firstName + ", " + address + ", " + phoneNumber + "." + NL + "Click Enter");
             //Console.ReadKey();
-            BusinessFacade.Instance.NewCustomer(lastName, firstName, address, phoneNumber);
+            BusinessFacade.Instance.SaveCustomer(lastName, firstName, address, phoneNumber);
         }
         /*
         public void InputOrder()

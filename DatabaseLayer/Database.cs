@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainLayer;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -36,8 +37,6 @@ namespace DatabaseLayer
                             string custAddress = reader["CustAddress"].ToString();
                             string custPhone = reader["CustPhoneNumber"].ToString();
                             Customer customerGet = new Customer(custLastName, custFirstName, custAddress, custPhone);
-                            //CustomerRepository custRepo = new CustomerRepository();
-                            //custRepo.AddCustomerToList(customerGet);
                             custList.Add(customerGet);
                         }
                     }

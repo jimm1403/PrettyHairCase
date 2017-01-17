@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DatabaseLayer;
+using DomainLayer;
 
 namespace PrettyHair
 {
@@ -34,11 +35,10 @@ namespace PrettyHair
             DatabaseFacade dbf = DatabaseFacade.Instance;
         }
 
-        public void NewCustomer(string lastName, string firstName, string address, string phoneNumber)
+        public void SaveCustomer(string lastName, string firstName, string address, string phoneNumber)
         {
-            DatabaseLayer.Customer newCust = new DatabaseLayer.Customer(lastName, firstName, address, phoneNumber);
+            Customer newCust = new Customer(lastName, firstName, address, phoneNumber);
             DatabaseFacade.Instance.NewCustomer(newCust);
-
         }
         public List<Customer> ShowCustomer()
         {

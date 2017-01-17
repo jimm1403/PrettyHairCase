@@ -152,27 +152,12 @@ namespace PH_UI
         }*/
         public void ShowCustomerList()
         {
-            
             List<Customer> finalCustList = BusinessFacade.Instance.ShowCustomer();
 
-            foreach (Customer cust in finalCustList)
+            foreach (Customer customer in finalCustList)
             {
-                Console.WriteLine(cust.ToString());
-
+                Console.WriteLine(customer.ToString());
             }
-            
-
-            //DatabaseFacade dbf = new DatabaseFacade();
-            //dbf.GetCustomer();
-            //List<Customer> customerList = custRepo.GetCustomerList();
-            //foreach (Customer customer in customerList)
-            //{
-            //    Console.WriteLine(customer.ToString());
-            //}
-            //Console.ReadKey();
-            //customerList.Clear();
-            //custRepo.ClearRepository();
-            
         }
         
         public void AddTestProducts()

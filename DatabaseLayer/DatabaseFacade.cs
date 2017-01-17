@@ -36,17 +36,14 @@ namespace DatabaseLayer
         {
             db = new Database();
         }
-
         public void NewCustomer(Customer newCust)
         {
             db.InsertCustomer(newCust);
         }
-
         public List<Customer> ShowCustomer()
         {
             List<Customer> custList = db.GetCustomer();
             return custList;
-
         }
     }
 }

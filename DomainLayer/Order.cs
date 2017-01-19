@@ -11,6 +11,7 @@ namespace DomainLayer
         DateTime deliveryDate;
         int productTypeId;
         int quantity;
+        string customerId;
 
         public int ProductTypeId
         {
@@ -21,13 +22,13 @@ namespace DomainLayer
             get { return quantity; }
         }
 
-        public Order(DateTime _orderDate, DateTime _deliveryDate, int _quantity, int _productTypeId)
+        public Order(DateTime orderDate, DateTime deliveryDate, int quantity, int productTypeId, string customerId)
         {
-            orderDate = _orderDate;
-            deliveryDate = _deliveryDate;
-            quantity = _quantity;
-            productTypeId = _productTypeId;
-            
+            this.orderDate = orderDate;
+            this.deliveryDate = deliveryDate;
+            this.quantity = quantity;
+            this.productTypeId = productTypeId;
+            this.customerId = customerId;
         }
         
         public override string ToString()

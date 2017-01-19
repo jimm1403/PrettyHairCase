@@ -12,23 +12,15 @@ namespace DatabaseLayer
     public class DatabaseFacade
     {
         Database db;
-        private static volatile DatabaseFacade instance;
-        private static object synchronizationRoot = new Object();
-        public static DatabaseFacade Instance
+        private static DatabaseFacade instance;
+        public static DatabaseFacade GetInstance
         {
             get
-            {
+            {    
                 if (instance == null)
                 {
-                    lock (synchronizationRoot)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new DatabaseFacade();
-                        }
-                    }
+                    instance = new DatabaseFacade();
                 }
-
                 return instance;
             }  
         }

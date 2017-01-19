@@ -23,7 +23,7 @@ namespace PH_UI
         public void Run()
         {
 
-            ShowCustomerList();
+            //ShowCustomerList();
             Console.Clear();
             string choice = "";
             bool run = true;
@@ -36,17 +36,17 @@ namespace PH_UI
 
                 switch (choice)
                 {
-                    case "r": RegisterCustomer(); break;
-                    case "l": ShowCustomerList(); Console.ReadKey(); break;
+                    //case "r": RegisterCustomer(); break;
+                    //case "l": ShowCustomerList(); Console.ReadKey(); break;
                     case "p": ShowProductInventory(); break;
                    //case "i": InputOrder(); break;
                    //case "n": NewProductType(); break;
                    //case "d": ChangeDescription(); break;
                    //case "a": AdjustPrice(); break;
                    //case "o": ShowOrderList(); break;
-                    case "addorder": AddTestOrders(); break;
+                   //case "addorder": AddTestOrders(); break;
                     case "addprod": AddTestProducts(); break;
-                    case "test": TestEvent();   break;
+                    //case "test": TestEvent();   break;
                     case "exit": run = false; break;
                     default: ShowMenuSelectionError(); break;
                 }
@@ -76,25 +76,25 @@ namespace PH_UI
             string userInput = Console.ReadLine().ToLower();
             return userInput;
         }
-        public void RegisterCustomer()
-        {
+        //public void RegisterCustomer()
+        //{
 
-            //DatabaseFacade databaseConnect = new DatabaseFacade();
-            //databaseConnect.InsertCustomer();
-            Console.WriteLine("Customer last name:");
-            string lastName = GetUserInput();
-            Console.WriteLine("Customer first name:");
-            string firstName = GetUserInput();
-            Console.WriteLine("Customer address:");
-            string address = GetUserInput();
-            Console.WriteLine("Customer phone number:");
-            string phoneNumber = GetUserInput();
-            //Customer newCustomer = new Customer(lastName, firstName, address, phoneNumber);
-            //customerRepository.AddCustomerToList(newCustomer);
-            //Console.WriteLine("You have registered: " + lastName + ", " + firstName + ", " + address + ", " + phoneNumber + "." + NL + "Click Enter");
-            //Console.ReadKey();
-            BusinessFacade.Instance.SaveCustomer(lastName, firstName, address, phoneNumber);
-        }
+        //    //DatabaseFacade databaseConnect = new DatabaseFacade();
+        //    //databaseConnect.InsertCustomer();
+        //    Console.WriteLine("Customer last name:");
+        //    string lastName = GetUserInput();
+        //    Console.WriteLine("Customer first name:");
+        //    string firstName = GetUserInput();
+        //    Console.WriteLine("Customer address:");
+        //    string address = GetUserInput();
+        //    Console.WriteLine("Customer phone number:");
+        //    string phoneNumber = GetUserInput();
+        //    //Customer newCustomer = new Customer(lastName, firstName, address, phoneNumber);
+        //    //customerRepository.AddCustomerToList(newCustomer);
+        //    //Console.WriteLine("You have registered: " + lastName + ", " + firstName + ", " + address + ", " + phoneNumber + "." + NL + "Click Enter");
+        //    //Console.ReadKey();
+        //    BusinessFacade.GetInstance.SaveCustomer(lastName, firstName, address, phoneNumber);
+        //}
         /*
         public void InputOrder()
         {
@@ -150,15 +150,15 @@ namespace PH_UI
 
             prodRepo.AdjustPriceByIndex(indexToChange, adjustedPrice);
         }*/
-        public void ShowCustomerList()
-        {
-            List<Customer> finalCustList = BusinessFacade.Instance.ShowCustomer();
+        //public void ShowCustomerList()
+        //{
+        //    List<Customer> finalCustList = BusinessFacade.GetInstance.ShowCustomer();
 
-            foreach (Customer customer in finalCustList)
-            {
-                Console.WriteLine(customer.ToString());
-            }
-        }
+        //    foreach (Customer customer in finalCustList)
+        //    {
+        //        Console.WriteLine(customer.ToString());
+        //    }
+        //}
         
         public void AddTestProducts()
         {
@@ -169,15 +169,16 @@ namespace PH_UI
             prodRepo.AddProductToList(newProduct2);
             prodRepo.AddProductToList(newProduct3);
         }
-        public void AddTestOrders()
-        {
-            Order newOrder1 = new Order(Convert.ToDateTime("28-10-2016"), Convert.ToDateTime("30-10-2016"), 18, 1);
-            Order newOrder2 = new Order(Convert.ToDateTime("20-10-2016"), Convert.ToDateTime("23-10-2016"), 7, 2);
-            Order newOrder3 = new Order(Convert.ToDateTime("18-10-2016"), Convert.ToDateTime("22-10-2016"), 5, 3);
-            orderRepo.AddOrderToList(newOrder1);
-            orderRepo.AddOrderToList(newOrder2);
-            orderRepo.AddOrderToList(newOrder3);
-        }
+        //public void AddTestOrders()
+        //{
+
+        //    Order newOrder1 = new Order(Convert.ToDateTime("28-10-2016"), Convert.ToDateTime("30-10-2016"), 18, 1);
+        //    Order newOrder2 = new Order(Convert.ToDateTime("20-10-2016"), Convert.ToDateTime("23-10-2016"), 7, 2);
+        //    Order newOrder3 = new Order(Convert.ToDateTime("18-10-2016"), Convert.ToDateTime("22-10-2016"), 5, 3);
+        //    orderRepo.AddOrderToList(newOrder1);
+        //    orderRepo.AddOrderToList(newOrder2);
+        //    orderRepo.AddOrderToList(newOrder3);
+        //}
         public void ShowOrderList()
         {
             List<Order> orderList = orderRepo.GetList();
@@ -198,16 +199,16 @@ namespace PH_UI
             Console.ReadKey();
             productList.Clear();
         }
-        public void TestEvent()
-        {
+        //public void TestEvent()
+        //{
 
-            OrderRepository m = new OrderRepository();
-            Email l = new Email();
-            l.Subscribe(m);
-            m.CheckQuantityAgainstAmount();
+        //    OrderRepository m = new OrderRepository();
+        //    Email l = new Email();
+        //    l.Subscribe(m);
+        //    m.CheckQuantityAgainstAmount();
             
-            Console.ReadKey();
+        //    Console.ReadKey();
             
-        }
+        //}
     }
 }

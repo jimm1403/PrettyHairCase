@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,26 +34,26 @@ namespace PrettyHair
         public EventArgs e = null;
         public delegate void EmailHandler(OrderRepository o, EventArgs e);
 
-        public void CheckQuantityAgainstAmount() 
-        {
-            List<Product> prodList = prodRepo.GetList();
+        //public void CheckQuantityAgainstAmount() 
+        //{
+        //    List<Product> prodList = prodRepo.GetList();
 
-            foreach (Order order in orderList)
-            {
-                foreach (Product item in prodList)
-                {
-                    if (order.ProductTypeId == item.GetId())
-                    {
-                        if (order.Quantity <= item.Amount)
-                        {
-                            if (Email != null)
-                            {
-                                Email(this, e);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        //    foreach (Order order in orderList)
+        //    {
+        //        foreach (Product item in prodList)
+        //        {
+        //            if (order.ProductTypeId == item.GetId())
+        //            {
+        //                if (order.Quantity <= item.Amount)
+        //                {
+        //                    if (Email != null)
+        //                    {
+        //                        Email(this, e);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

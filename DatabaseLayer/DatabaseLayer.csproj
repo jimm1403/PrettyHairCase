@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseFacade.cs" />
+    <Compile Include="Interfaces\IKeyGenerator.cs" />
+    <Compile Include="KeyGenerator\KeyGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

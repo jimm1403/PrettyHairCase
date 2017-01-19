@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\BusinessFacade.cs" />
+    <Compile Include="Controller\CustomerController.cs" />
+    <Compile Include="Controller\ProductController.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Business\OrderRepository.cs" />
     <Compile Include="Business\ProductRepository.cs" />

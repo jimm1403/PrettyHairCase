@@ -13,6 +13,7 @@ namespace DomainLayer
         string address;
         string phoneNumber;
 
+        //Properties
         public string LastName
         {
             get

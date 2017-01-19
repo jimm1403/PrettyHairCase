@@ -35,7 +35,7 @@ namespace PrettyHair
         }
         public void SaveToDB(Customer newCust)
         {
-            DatabaseLayer.DatabaseFacade.Instance.NewCustomer(newCust);
+            DatabaseLayer.DatabaseFacade.GetInstance.NewCustomer(newCust);
         }
     }
 }

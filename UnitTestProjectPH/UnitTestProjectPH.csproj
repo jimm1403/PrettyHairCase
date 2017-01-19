@@ -53,10 +53,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DatabaseUnitTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseLayer\DatabaseLayer.csproj">
+      <Project>{9062b9f9-1e5a-4e15-b65d-9fe9c17c5a15}</Project>
+      <Name>DatabaseLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainLayer\DomainLayer.csproj">
+      <Project>{b1cbbb0a-c0a7-4b94-b0e9-b399c616dd25}</Project>
+      <Name>DomainLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PrettyHair\PrettyHair.csproj">
       <Project>{af5eb97d-720e-4c66-9a5a-296e33d66765}</Project>
       <Name>PrettyHair</Name>

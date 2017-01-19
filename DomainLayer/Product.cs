@@ -8,13 +8,12 @@ namespace DomainLayer
     public class Product
     {
         //Variables
-        static int nextid = 1;
-
-        int productId;
+        string productId;
         string productName;
         double price;
         string description;
         int amount;
+
         //Properties
         public string ProductName
         {
@@ -36,10 +35,14 @@ namespace DomainLayer
             get { return price; }
             set { price = value; }
         }
+        public string ProductId
+        {
+            get { return productId; }
+            set { productId = value; }
+        }
         //Constructor
         public Product()
         {
-
         }
         public Product(string productName, double price, string description, int amount)
         {
@@ -47,10 +50,10 @@ namespace DomainLayer
             this.price = price;
             this.description = description;
             this.amount = amount;
-            productId = nextid++;
         }
+
         //Methods
-        public int GetId()
+        public string GetId()
         {
             return productId;
         }
@@ -70,14 +73,12 @@ namespace DomainLayer
             }
             else
             {
-                Console.WriteLine("There is not enough in stock to process this order.");
+                throw new Exception();
             }
         }
         public void AdjustPrice(double adjustedPrice)
         {
             price = adjustedPrice;
         }
-
-        
     }
 }

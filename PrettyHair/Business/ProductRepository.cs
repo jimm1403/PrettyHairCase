@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,15 +46,15 @@ namespace PrettyHair
             productList[index].AdjustPrice(adjustedPrice);
         }
 
-        public void DeleteProduct(int productId)
-        {
-            foreach (Product product in productList)
-            {
-                if (product.GetId() == productId)
-                {
-                    productList.Remove(product); break;
-                }
-            }
-        }
+        //public void DeleteProduct(int productId)
+        //{
+        //    foreach (Product product in productList)
+        //    {
+        //        if (product.GetId() == productId)
+        //        {
+        //            productList.Remove(product); break;
+        //        }
+        //    }
+        //}
     }
 }

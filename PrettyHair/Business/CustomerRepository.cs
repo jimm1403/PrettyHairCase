@@ -8,19 +8,15 @@ namespace PrettyHair
 {
     public class CustomerRepository
     {
-        List<Customer> customerList = new List<Customer>();
+        public List<Customer> customerList { get; private set; }
 
-        public void AddAllCustomersToList(List<Customer> custList)
+        public CustomerRepository()
         {
-            customerList.AddRange(custList);
+            customerList = new List<Customer>();
         }
         public void AddCustomerToList(Customer newCustomer)
         {
             customerList.Add(newCustomer);
-        }
-        public void ClearRepository()
-        {
-            customerList.Clear();
         }
         public List<Customer> GetCustomerList()
         {

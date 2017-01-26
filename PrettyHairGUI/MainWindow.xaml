@@ -1,0 +1,13 @@
+﻿<Window x:Class="PrettyHairGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrettyHairGUI"
+        xmlns:views = "clr-namespace:PrettyHairGUI.Views"
+        mc:Ignorable="d"
+        Title="NICEHAIR THE APP" Height="350" Width="525" ResizeMode="NoResize" SizeToContent="WidthAndHeight" Background="White" Foreground="Black" FontWeight="Bold">
+    <Grid>
+        <views:CustomerView x:Name = "CustomerViewControl"/>
+    </Grid>
+</Window>

@@ -7,10 +7,11 @@ using System.Text;
 
 namespace PrettyHair
 {
-    class CustomerController
+    public class CustomerController
     {
         //Fields
         private static CustomerController instance;
+        private CustomerRepository custRepo;
 
         //Properties
         public Customer CurrentCustomer { get; private set; }
@@ -20,6 +21,7 @@ namespace PrettyHair
         private CustomerController()
         {
             CurrentCustomer = null;
+            custRepo = new CustomerRepository();
         }
 
         //Methods
@@ -36,12 +38,23 @@ namespace PrettyHair
         {
             Customer customer = new Customer();
             CurrentCustomer = customer;
+            custRepo.AddCustomerToList(customer);
+        }
+        public void saveToDB()
+        {
             DatabaseFacade.GetInstance.NewCustomer(CurrentCustomer);
         }
-        public List<Customer> ShowCustomer(List<Customer> dbCustList)
+
+        public List<Customer> GetCustomer()
         {
-            custList = dbCustList;
+            //return custRepo.customerList;
+            ShowCustomer();
             return custList;
+        }
+
+        public void ShowCustomer()
+        {
+            custList = DatabaseFacade.GetInstance.ShowCustomer();
         }
     }
 }

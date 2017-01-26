@@ -11,7 +11,9 @@ namespace PrettyHair
         ProductRepository prodRepo = new ProductRepository();
         static List<Order> orderList = new List<Order>();
         List<string> stringList = new List<string>();
+
         
+
         public void AddOrderToList(Order newOrder)
         {
             orderList.Add(newOrder);

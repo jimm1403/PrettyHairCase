@@ -2,19 +2,33 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PrettyHair;
 using System.Collections.Generic;
+using DomainLayer;
 
 namespace UnitTestProjectPH
 {
-    
-    //[TestClass]
-    //public class UnitTest1
-    //{
-    //    [TestInitialize]
-    //    public void SetUpTest()
-    //    {
+
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestInitialize]
+        public void SetUpTest()
+        {
+
+        }
+        [TestMethod]
+        public void CanAddCustomer()
+        {
+            CustomerRepository custRepo = new CustomerRepository();
+            CustomerController custControl = CustomerController.GetInstance();
+            custControl.AddCustomer();
+            custControl.CurrentCustomer.FirstName = "Jimmi";
+            custControl.CurrentCustomer.LastName = "Christensen";
+            custControl.CurrentCustomer.Address = "Bernstorffvej 10";
+            custControl.CurrentCustomer.PhoneNumber = "28734552";
             
-    //    }
-        
+            Assert.AreEqual(custRepo.customerList.Count, 1);
+        }
+        /*
     //    [TestMethod]
     //    public void CanAddCustomerToList()
     //    {
@@ -135,5 +149,6 @@ namespace UnitTestProjectPH
 
     //        Assert.AreNotEqual(newProduct.GetId(), newProduct2.GetId());
     //    }
-    //}
+    */
+    }
 }

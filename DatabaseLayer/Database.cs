@@ -71,12 +71,9 @@ namespace DatabaseLayer
                 }
                 catch (SqlException e)
                 {
-                    Console.WriteLine("UPS " + e.Message);
-                    Console.ReadKey();
+                    string error = "UPS " + e.Message;
                 }
-
             }
-
         }
     }
 }

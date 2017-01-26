@@ -16,31 +16,23 @@ namespace DomainLayer
         //Properties
         public string LastName
         {
-            get
-            {
-                return lastName;
-            }
+            get { return lastName; }
+            set { lastName = value; }
         }
         public string FirstName
         {
-            get
-            {
-                return firstName;
-            }
+            get { return firstName; }
+            set { firstName = value; }
         }
         public string Address
         {
-            get
-            {
-                return address;
-            }
+            get { return address; }
+            set { address = value; }
         }
         public string PhoneNumber
         {
-            get
-            {
-                return phoneNumber;
-            }
+            get { return phoneNumber; }
+            set { phoneNumber = value; }
         }
 
         //Constructor
